@@ -1,4 +1,4 @@
-SOFTENG 325 Assignment 01 - A Concert Booking Service
+Assignment - A Concert Booking Service
 ==========
 **NOTE:** This README contains the same content as the **PDF** handout you are given.
 
@@ -46,13 +46,13 @@ Write a reflective report of **no more than two pages**, reflecting on the follo
 
 Resources
 ----------
-A multi-module Maven project, `se325-assignment-01`, is supplied and comprises 3 modules: 
+A multi-module Maven project, `asg-conceret`, is supplied and comprises 3 modules: 
 
-- `se325-concert-client`. A module that contains resources for building a concert client application.
+- `concert-client`. A module that contains resources for building a concert client application.
 
-- `softeng325-concert-common`. This module defines several entities that are shared by the `client` and `service` modules.
+- `concert-common`. This module defines several entities that are shared by the `client` and `service` modules.
 
-- `softeng325-concert-service`. The `service` module is responsible for implementing the Web service and persistence aspects of the concert application.
+- `concert-service`. The `service` module is responsible for implementing the Web service and persistence aspects of the concert application.
 
 The parent project's POM includes common dependencies and properties that are inherited by the 3 modules.
 
@@ -69,24 +69,24 @@ The client is intended to be a demonstration of the kind of web application that
 #### Common module
 This module includes a number of packages:
 
-- `se325.assignment01.concert.common.dto`. This package contains complete implementations for 7 DTO classes. The `client` webapp above, and the integration tests (see below), are defined in terms of the DTO classes.
+- `asg.concert.common.dto`. This package contains complete implementations for 7 DTO classes. The `client` webapp above, and the integration tests (see below), are defined in terms of the DTO classes.
 	
-- `se325.assignment01.concert.common.jackson`. This package includes the Jackson serializer and deserializer implementations for Java's `LocalDateTime` class.
+- `asg.concert.common.jackson`. This package includes the Jackson serializer and deserializer implementations for Java's `LocalDateTime` class.
 
-- `se325.assignment01.concert.common.types`. This package defines basic data types that are common to the `client` and `service` modules. The types comprise 2 enumerations: `Genre` (for performers), and `BookingStatus` (for querying availalbe / unavailable seats).
+- `asg.concert.common.types`. This package defines basic data types that are common to the `client` and `service` modules. The types comprise 2 enumerations: `Genre` (for performers), and `BookingStatus` (for querying availalbe / unavailable seats).
 
 #### Service module
 The `service` module will contain your completed Web service for the assignment. It contains the following packages:
 
-- `se325.assignment01.concert.service.domain`. This package will contain the web service's completed domain model. Currently it includes two **incomplete** classes - `Concert` and `Seat`. These two classes must be completed, and any other domain classes you deem necessary should be added.
+- `asg.concert.service.domain`. This package will contain the web service's completed domain model. Currently it includes two **incomplete** classes - `Concert` and `Seat`. These two classes must be completed, and any other domain classes you deem necessary should be added.
 
-- `se325.assignment01.concert.service.jaxrs`. This package contains the `LocalDateTimeParam` class. This class allows us to receive `LocalDateTime` instances as *query* or *path* parameters, which may prove useful when implementing your web service. For a detailed description, be sure to read the class's comments.
+- `asg.concert.service.jaxrs`. This package contains the `LocalDateTimeParam` class. This class allows us to receive `LocalDateTime` instances as *query* or *path* parameters, which may prove useful when implementing your web service. For a detailed description, be sure to read the class's comments.
 
-- `se325.assignment01.concert.service.mapper`. This package is intended to contain mapper classes, which map between your domain and DTO classes.
+- `asg.concert.service.mapper`. This package is intended to contain mapper classes, which map between your domain and DTO classes.
 
-- `se325.assignment01.concert.service.services`. This package contains the `ConcertResource` class, which you must implement for this assignment. It also contains a `PersistenceManager` class which can be used to obtain `EntityManager` instances when required, a complete `ConcertApplication` class, and a `TestResource` class which implements a web service endpoint to reset the database. This is used for testing purposes.
+- `asg.concert.service.services`. This package contains the `ConcertResource` class, which you must implement for this assignment. It also contains a `PersistenceManager` class which can be used to obtain `EntityManager` instances when required, a complete `ConcertApplication` class, and a `TestResource` class which implements a web service endpoint to reset the database. This is used for testing purposes.
 
-- `se325.assignment01.concert.service.util`. This package contains the `ConcertUtils` class, which can re-initialize the database, and the `TheatreLayout` class, which can be used to generate `Seat`s for a particular concert date.
+- `asg.concert.service.util`. This package contains the `ConcertUtils` class, which can re-initialize the database, and the `TheatreLayout` class, which can be used to generate `Seat`s for a particular concert date.
 
 Beyond packages and source files, the `service` module contains the JPA `persistence.xml` file, a database initialise script (`db-init.sql`) and a `log4j.properties` file (in `src/main/resources`). Finally, integration tests are included in the `src/test/java` folder. As usual, these tests may be run by executing Maven's `verify` goal on the parent project, and a 100% pass-rate (along with correct client functionality) is a good indication that your service implementation is correct.
 
@@ -95,7 +95,7 @@ The `persistence.xml` file includes a `javax.persistence.sql-load-script-source`
 
 Constraints
 ----------
-You are not permitted to change the `ConcertServiceIT` class. Since these integration tests rely on the DTO classes in package `se325.assignment01.concert.common.dto`, and the data types in package `se325.assignment01.concert.common.types`, you cannot change these entities either - except to add any required annotations.
+You are not permitted to change the `ConcertServiceIT` class. Since these integration tests rely on the DTO classes in package `asg.concert.common.dto`, and the data types in package `asg.concert.common.types`, you cannot change these entities either - except to add any required annotations.
 
 Your solution must load the data as described by the `db-init.sql` file (i.e. you must have the 2 users, 11 performers, 8 concerts, all 11 supplied concert-performer pairings and all 13 concert dates). Failure to do so will result in the integration tests failing, which will negatively impact your assignment grade. As such, when defining JPA annotations, ensure that you supply all table and column names as appropriate.
 
@@ -176,7 +176,7 @@ Run Maven's `clean` goal on the parent project to clear all generated code, and 
 
 Appendix: The client webapp.
 ----------
-The `se325-concert-client` project contains a complete web application which is designed to communicate with your web service from both its server-side (Java) and client-side (JavaScript) code, to deliver its functionality.
+The `concert-client` project contains a complete web application which is designed to communicate with your web service from both its server-side (Java) and client-side (JavaScript) code, to deliver its functionality.
 
 #### App usage
 Using the application, browsing to `/Concerts` or simply `/` (within the webapp's *context*) will present the "homepage" of the app, allowing the user to view concerts. On this page, users may scroll through the list of concerts on the left side of the page. Clicking on a concert will cause that concert's info to be displayed in the detail view.

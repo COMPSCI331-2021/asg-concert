@@ -1,9 +1,10 @@
 package se325.assignment01.concert.service;
 
 import org.junit.*;
-import se325.assignment01.concert.common.dto.*;
-import se325.assignment01.concert.common.jackson.LocalDateTimeDeserializer;
-import se325.assignment01.concert.common.types.Genre;
+
+import asg.concert.common.dto.*;
+import asg.concert.common.jackson.LocalDateTimeDeserializer;
+import asg.concert.common.types.Genre;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
