@@ -3,7 +3,7 @@
     {
       "name": "test resource",
       "setup": "",
-      "run": "vn -B -Dit.test=ConcertResourceIT verify --file pom.xml",
+      "run": "mvn -B -Dit.test=ConcertResourceIT verify --file pom.xml",
       "input": "",
       "output": "",
       "timeout": 10,
