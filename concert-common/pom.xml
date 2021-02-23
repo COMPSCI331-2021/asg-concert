@@ -2,11 +2,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>nz.ac.auckland.se325</groupId>
-        <artifactId>assignment-01-concert</artifactId>
+        <groupId>nz.ac.auckland</groupId>
+        <artifactId>asg-concert</artifactId>
         <version>1.0</version>
     </parent>
-    <artifactId>assignment-01-concert-common</artifactId>
+    <artifactId>concert-common</artifactId>
 
     <properties>
         <jackson.version>2.10.5</jackson.version>

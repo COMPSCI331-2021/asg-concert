@@ -3,21 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>assignment-01-concert</artifactId>
-        <groupId>nz.ac.auckland.se325</groupId>
+        <artifactId>asg-concert</artifactId>
+        <groupId>nz.ac.auckland</groupId>
         <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>assignment-01-concert-client</artifactId>
+    <artifactId>concert-client</artifactId>
 
     <packaging>war</packaging>
 
     <dependencies>
         <!-- Library with common DTO classes, data types etc. -->
         <dependency>
-            <groupId>nz.ac.auckland.se325</groupId>
-            <artifactId>assignment-01-concert-common</artifactId>
+            <groupId>nz.ac.auckland</groupId>
+            <artifactId>concert-common</artifactId>
             <version>1.0</version>
         </dependency>
 

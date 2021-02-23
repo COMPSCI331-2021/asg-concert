@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>nz.ac.auckland.se325</groupId>
-    <artifactId>assignment-01-concert</artifactId>
+    <groupId>nz.ac.auckland</groupId>
+    <artifactId>asg-concert</artifactId>
     <version>1.0</version>
 
     <packaging>pom</packaging>
-    <name>assignment-01-concert-parent</name>
+    <name>concert-parent</name>
 
     <properties>
         <slf.version>1.7.25</slf.version>
@@ -19,9 +19,9 @@
     </properties>
 
     <modules>
-        <module>se325-concert-common</module>
-        <module>se325-concert-service</module>
-        <module>se325-concert-client</module>
+        <module>concert-common</module>
+        <module>concert-service</module>
+        <module>concert-client</module>
     </modules>
 
     <dependencies>
