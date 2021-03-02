@@ -266,3 +266,6 @@ Whichever IDE you use, the first step will be to download a Tomcat installation,
 12. Browse to the appropriate URL from your browser (which should be <http://localhost:10000/concert-webapp/> if you've followed along), and enjoy.
 
 13. When you make modifications and repackage your WARs, you can delete the contents of the `webapps` folder and re-copy your new WARs over (while the server is stopped).
+
+#### Github Classroom
+After you finish this assignment and push your code to the repository on Github, Please check if the execution of `Github classroom workflow` runs successfully without any test fails.
