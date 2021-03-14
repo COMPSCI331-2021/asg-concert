@@ -1,8 +1,7 @@
-Assignment - A Concert Booking Service
+Project - A Concert Booking Service
 ==========
-**NOTE:** This README contains the same content as the **PDF** handout you are given.
 
-The aim of this assignment is to build a Web service for concert booking. 
+The aim of this project is to build a Web service for concert booking. 
 
 System description
 ----------
@@ -27,12 +26,14 @@ Develop an object-oriented domain model for the concert service. The model shoul
 #### 2) Develop a RESTful Web service
 Develop a JAX-RS Web service that exposes the required functionality. In developing the service, you should define an appropriate REST interface in terms of resource URIs and HTTP methods.
 
-#### 3) Write a reflective report
-Write a reflective report of **no more than two pages**, reflecting on the following topics:
+Points to consider
+----------
+
+To check your understanding of the various concepts used in this project, you should consider the following:
 
 1. How have you made an effort to improve the *scalability* of your web service?
 
-2. Identify (implicit and explicit) uses of *lazy loading* and *eager fetching* within your web service, and justify why those uses are appropriate in the context of this web service? 
+2. What (implicit and explicit) uses of *lazy loading* and *eager fetching* are used within your web service. Why those uses are appropriate in the context of this web service? 
 
 3. How have you made an effort to remove the possibility of issues arising from concurrent access, such as double-bookings?
 
@@ -46,7 +47,7 @@ Write a reflective report of **no more than two pages**, reflecting on the follo
 
 Resources
 ----------
-A multi-module Maven project, `asg-conceret`, is supplied and comprises 3 modules: 
+A multi-module Maven project, `asg-concert`, is supplied and comprises 3 modules: 
 
 - `concert-client`. A module that contains resources for building a concert client application.
 
@@ -57,12 +58,12 @@ A multi-module Maven project, `asg-conceret`, is supplied and comprises 3 module
 The parent project's POM includes common dependencies and properties that are inherited by the 3 modules.
 
 #### System architecture
-The system as a whole is a *tiered* architecture, in which a browser application, driven by a *web app*, communicates via HTTP with the *web service* you will create for this assignment. A high-level overview can be seen in the below diagram:
+The system as a whole is a *tiered* architecture, in which a browser application, driven by a *web app*, communicates via HTTP with the *web service* you will create for this project. A high-level overview can be seen in the below diagram:
 
 ![](./spec/system-architecture.png)
 
 #### Client module
-The client module contains a *web application*, built using technologies such as HTML5, CSS, JavaScript, JSP, and JSTL. This web application is capable of acting as a *client* to the web service which you will create for this assignment, as shown in the diagram above. The client contains both browser-based and server-based code (written in JavaScript and Java, respectively) which communicate with the `service` layer over HTTP.
+The client module contains a *web application*, built using technologies such as HTML5, CSS, JavaScript, JSP, and JSTL. This web application is capable of acting as a *client* to the web service which you will create for this project, as shown in the diagram above. The client contains both browser-based and server-based code (written in JavaScript and Java, respectively) which communicate with the `service` layer over HTTP.
 
 The client is intended to be a demonstration of the kind of web application that can be powered by the web service you will create. You will not need to modify the application, other than potentially altering the value of `Config.WEB_SERVICE_URI`, but the application can be used as part of your testing.
 
@@ -76,7 +77,7 @@ This module includes a number of packages:
 - `asg.concert.common.types`. This package defines basic data types that are common to the `client` and `service` modules. The types comprise 2 enumerations: `Genre` (for performers), and `BookingStatus` (for querying availalbe / unavailable seats).
 
 #### Service module
-The `service` module will contain your completed Web service for the assignment. It contains the following packages:
+The `service` module will contain your completed Web service for the project. It contains the following packages:
 
 - `asg.concert.service.domain`. This package will contain the web service's completed domain model. Currently it includes two **incomplete** classes - `Concert` and `Seat`. These two classes must be completed, and any other domain classes you deem necessary should be added.
 
@@ -84,7 +85,7 @@ The `service` module will contain your completed Web service for the assignment.
 
 - `asg.concert.service.mapper`. This package is intended to contain mapper classes, which map between your domain and DTO classes.
 
-- `asg.concert.service.services`. This package contains the `ConcertResource` class, which you must implement for this assignment. It also contains a `PersistenceManager` class which can be used to obtain `EntityManager` instances when required, a complete `ConcertApplication` class, and a `TestResource` class which implements a web service endpoint to reset the database. This is used for testing purposes.
+- `asg.concert.service.services`. This package contains the `ConcertResource` class, which you must implement for this project. It also contains a `PersistenceManager` class which can be used to obtain `EntityManager` instances when required, a complete `ConcertApplication` class, and a `TestResource` class which implements a web service endpoint to reset the database. This is used for testing purposes.
 
 - `asg.concert.service.util`. This package contains the `ConcertUtils` class, which can re-initialize the database, and the `TheatreLayout` class, which can be used to generate `Seat`s for a particular concert date.
 
@@ -97,7 +98,7 @@ Constraints
 ----------
 You are not permitted to change the `ConcertServiceIT` class. Since these integration tests rely on the DTO classes in package `asg.concert.common.dto`, and the data types in package `asg.concert.common.types`, you cannot change these entities either - except to add any required annotations.
 
-Your solution must load the data as described by the `db-init.sql` file (i.e. you must have the 2 users, 11 performers, 8 concerts, all 11 supplied concert-performer pairings and all 13 concert dates). Failure to do so will result in the integration tests failing, which will negatively impact your assignment grade. As such, when defining JPA annotations, ensure that you supply all table and column names as appropriate.
+Your solution must load the data as described by the `db-init.sql` file (i.e. you must have the 2 users, 11 performers, 8 concerts, all 11 supplied concert-performer pairings and all 13 concert dates). Failure to do so will result in the integration tests failing, which will negatively impact your grade. As such, when defining JPA annotations, ensure that you supply all table and column names as appropriate.
 
 While your Web service doesn't need to be tested with concurrent clients, it *does* need to be implemented in such a way that it could be used by concurrent clients without comprising data integrity.
 
@@ -152,8 +153,17 @@ Hints and Suggestions
 Assessment and submission
 ----------
 
+#### Submission
+
+The marking of this lab will be based on your team repository as of
+**Monday May 10 0800hrs**. Your submission must include a file `Team.md` containing the
+list of members in your team and a brief summary of what role each member
+played.
+
+**If this file is not provided then no marks will be awarded for the Teamwork component of the mark (see below).**
+
 #### Assessment
-This assignment is worth **16%** of your final grade for SOFTENG 325. It is marked out of **80 marks**, as per the following rubric:
+This project is worth **30%** of your final grade. It is marked out of **80 marks**, as per the following rubric:
 
 - All unit tests, other than the publish / subscribe tests, pass as expected: **24 marks** (1 mark per test).
 
@@ -161,18 +171,28 @@ This assignment is worth **16%** of your final grade for SOFTENG 325. It is mark
 
 - The five publish / subscribe tests pass as expected: **10 marks** (4 marks each for `testSubscription()` and `testSubscriptionForDifferentConcert()`, 2 marks for the other three tests combined).
 
-- A strategy has been employed to minimize the chance of concurrency errors such as double-bookings: **5 marks** (marks awarded varies based on the strategy chosen and the strength of its justification in the report).
+- Code review: **10 marks** (code is understandable and well-commented; no obvious errors that may have been missed by the integration tests).
 
-- Domain model: **10 marks** (marks awarded varies based on your appropriate use of features such as eager vs lazy fetching & cascading, and the general quality of the domain model).
+- Teamwork: **30 marks** Clear evidence that every member in the team has
+  contributed to the project. This will be assessed by examining the commit
+  logs and other information associated with your team repository.
 
-- Code review: **5 marks** (code is understandable and well-commented; no obvious errors which may have been missed by the integration tests).
+    We expect to see non-trivial commits, with meaningful commit
+    messages. Different team members will do different things and different
+    times, but we will be looking for evidence that there was cooperation and
+    collaboration.
 
-- Report: **20 marks** (report is well-structured and understandable; good grammar and spelling; report's arguments for each of the points are well-thought-out and convincing).
+    Use the `Team.md` file to document how the work was
+    done. For example, the team may discuss the domain model together but only
+    one person implements. This will mean we might only see commits from that
+    person, and wonder if the other members were involved. A short explanation
+    in `Team.md` will help this. Alternatively, the other two members might
+    explain their contribution in a pull request (in which case this should be
+    noted in `Team.md`). 
 
+    If no `Team.md` file is provided then a mark of **zero** will be given for this component.
 
-#### Submission
-Run Maven's `clean` goal on the parent project to clear all generated code, and **remove version control artifacts such as the `.git` folder**, if you have used version control. Zip up your report (**as a PDF document**) and your code into a single Zip archive, and submit the Zip to Canvas on or before the Assignment 01 due date listed on the Canvas Assessments page.
-
+    Issues with team performance (e.g. one member not contributing) must be brought to our attention as soon as possible.
 
 Appendix: The client webapp.
 ----------
@@ -206,7 +226,7 @@ Once the user has made their selection, they can click the "Book!" button. Assum
 Dismissing the dialog will redirect the user back to the concerts page, where they may continue to book tickets at other concerts / dates. (or more tickets for the same concert / date).
 
 #### Limitations
-The webapp currently *partially* exercises the web service you are required to create for this assignment. Functionality for a user to view their bookings is not implemented, though this is required by the web service specification. Additionally, the webapp does not participate in the *publish / subscribe* functionality required of the service.
+The webapp currently *partially* exercises the web service you are required to create for this project. Functionality for a user to view their bookings is not implemented, though this is required by the web service specification. Additionally, the webapp does not participate in the *publish / subscribe* functionality required of the service.
 
 #### Running the complete system
 The only way to run the complete system is to package both the `client` and `service` projects into `WAR` files, and deploy them to a running servlet container such as Tomcat.
@@ -214,6 +234,8 @@ The only way to run the complete system is to package both the `client` and `ser
 Fortunately, running Maven's `package` goal on the parent project will build both WARs as required. However, we will still need to set up a Tomcat (or similar) instance to run the application.
 
 Whichever IDE you use, the first step will be to download a Tomcat installation, if you don't already have one. You can find them [here](https://tomcat.apache.org/download-80.cgi). Get version `8.5.x` as an archive (the installer isn't required), download and unzip it somewhere on your machine, and then follow the steps below according to your IDE.
+
+**Warning** There seem to be a number of variations in IDE setup and installation, so what's below may not work for your particular setup. You may need to explore google to find workable alternatives. [Tomcat-CL](Tomcat-CL.md) has a simplified attempt for doing it from the command line.
 
 ##### From IntelliJ
 **Note: This ONLY works in IntelliJ Ultimate edition.** Community edition does not support this. Having said that, Ultimate edition is available for free for educational use. Simply sign up for a new account using your University email address.
@@ -239,7 +261,8 @@ Whichever IDE you use, the first step will be to download a Tomcat installation,
 10. When you're done, hit the *stop* button. Sometimes you may need to click it twice (do so until the stop button is greyed out, and you see a *Disconnected from server* message in the server output).
 
 ##### From Eclipse
-**Note: This only works with Eclipse for Java EE Developers, with Tomcat support enabled**. If you don't see any of the options mentioned here, it's likely that you don't have these options. You can get them through the *Help* &rarr; *Install new software* menu, searching for *Java EE* and *Tomcat*, respectively.
+**Note: This only works with Eclipse for Java EE Developers, with Tomcat support enabled**. If you don't see any of the options mentioned here, it's likely that you don't have these options. You can get them through the *Help* &rarr; *Install new software* menu, searching for *Java EE* and *Tomcat*, respectively. Alternatively you could try using the 
+[marketplace] (https://marketplace.eclipse.org/content/eclipse-java-ee-developer-tools-0) directly.
 
 1. Open *Window* &rarr; *Preferences*, then choose *Server* &rarr; *Runtime Environments*. Click *Add*, then choose the Apache Tomcat version matching the one you downloaded (which should be v8.5 if you're following along).
 
@@ -266,6 +289,3 @@ Whichever IDE you use, the first step will be to download a Tomcat installation,
 12. Browse to the appropriate URL from your browser (which should be <http://localhost:10000/concert-webapp/> if you've followed along), and enjoy.
 
 13. When you make modifications and repackage your WARs, you can delete the contents of the `webapps` folder and re-copy your new WARs over (while the server is stopped).
-
-#### Github Classroom
-After you finish this assignment and push your code to the repository on Github, Please check if the execution of `Github classroom workflow` runs successfully without any test fails.
