@@ -26,6 +26,18 @@ Develop an object-oriented domain model for the concert service. The model shoul
 #### 2) Develop a RESTful Web service
 Develop a JAX-RS Web service that exposes the required functionality. In developing the service, you should define an appropriate REST interface in terms of resource URIs and HTTP methods.
 
+#### 3) Document some design choices and the organisation of your team
+Create a document named `Organisation.md` containing the following details:
+
+- Summary of what each team member did and how the team was organised.
+For example, the team may discuss the domain model together but only
+one person implements. This will mean we might only see commits from that
+person, and wonder if the other members were involved. A short explanation
+in `Organisation.md` will help this. It could be a couple of sentences for each member or a simple *All members participated about the same for everything* (in which case the logs should reflect this).
+- Short description of the strategy used to minimise the chance of
+concurrency errors (2-3 sentences)
+- Short description of how the domain model is organised (2-3 sentences)
+
 Points to consider
 ----------
 
@@ -74,7 +86,7 @@ This module includes a number of packages:
 	
 - `asg.concert.common.jackson`. This package includes the Jackson serializer and deserializer implementations for Java's `LocalDateTime` class.
 
-- `asg.concert.common.types`. This package defines basic data types that are common to the `client` and `service` modules. The types comprise 2 enumerations: `Genre` (for performers), and `BookingStatus` (for querying availalbe / unavailable seats).
+- `asg.concert.common.types`. This package defines basic data types that are common to the `client` and `service` modules. The types comprise 2 enumerations: `Genre` (for performers), and `BookingStatus` (for querying available / unavailable seats).
 
 #### Service module
 The `service` module will contain your completed Web service for the project. It contains the following packages:
@@ -113,7 +125,7 @@ Hints and Suggestions
 	
 - **Domain modelling of users, concerts and performers**. The supplied `db-init.sql` file populates relational tables with data about users, concerts information (including dates), performers, and which concerts feature which performers. To use the script without modification as required, you might want to work backwards from the tables and define `Concert`, `Performer` and `User` entity classes, annotated appropriately, such that the JPA provider generates the schema expected by the `db-init.sql` script. Your domain model would then need additional classes to fully meet the system's requirements. 
 	
-- **Token-based authentication**. The web service specification sometimes calls for an authenticated user. Authentication should be implemented using *token-based authentication*, which is where the client exchanges credentials (username and password) for a token. Once authenticated, the client sends the token with each subsequent request to the web service. For any requests requiring authentication, the Web service checks for the presence of the token. If the token's missing, the request fails; if the token doesn't identify a user (based upon accessing storage to lookup any user to whom the token is associated), the request fails. Where the token is bound to a particular user, the user is then authenticated, and the web service may then determine whether the user is authorized to make the request.
+- **Token-based authentication**. The web service specification sometimes calls for an authenticated user. Authentication should be implemented using *token-based authentication*, which is where the client exchanges credentials (username and password) for a token. Once authenticated, the client sends the token with each subsequent request to the web service. For any requests requiring authentication, the Web service checks for the presence of the token. If the token's missing, the request fails; if the token doesn't identify a user (based upon accessing storage to lookup any user to whom the token is associated), the request fails. Where the token is bound to a particular user, the user is then authenticated, and the web service may then determine whether the user is authorised to make the request.
 	
 - **Returning appropriate HTTP status codes**. There are several HTTP status codes that are defined by the HTTP specification. While there isn't complete agreement on which codes to use in REST-based Web services, the following conventions are widely accepted.
 	
@@ -145,7 +157,8 @@ Hints and Suggestions
    
    4. Finally, the Jetty server will be terminated, and any results reported. **You may need to scroll through the printed logs to find the actual failures which occurred, if any**.
    
-   **Note:** The final five tests in `ConcertResourceIT` - which test the *publish / subscribe* feature introduced in the system description - are commented out to start with as they take some time to run. Ensure you uncomment these tests when you begin developing your async functionality.
+    
+   **Note:** The final five tests in `ConcertSubscriptionIT` - which test the *publish / subscribe* feature introduced in the system description - take some time to run. You may want to disable them in the early stages of your development, but ensure you re-enable them when you begin developing your async functionality.
    
 - **Logging**. You may adjust the `log4j.properties` files as you see fit, to view more or less logging information as required for your testing.
 
@@ -156,7 +169,7 @@ Assessment and submission
 #### Submission
 
 The marking of this lab will be based on your team repository as of
-**Monday May 10 0800hrs**. Your submission must include a file `Team.md` containing the
+**Monday May 10 0800hrs**. Your submission must include a file `Organisation.md` containing the
 list of members in your team and a brief summary of what role each member
 played.
 
@@ -171,9 +184,13 @@ This project is worth **30%** of your final grade. It is marked out of **80 mark
 
 - The five publish / subscribe tests pass as expected: **10 marks** (4 marks each for `testSubscription()` and `testSubscriptionForDifferentConcert()`, 2 marks for the other three tests combined).
 
-- Code review: **10 marks** (code is understandable and well-commented; no obvious errors that may have been missed by the integration tests).
+- A strategy has been employed to minimise the chance of concurrency errors such as double-bookings: **5 marks** (marks awarded varies based on the strategy chosen).
 
-- Teamwork: **30 marks** Clear evidence that every member in the team has
+- Domain model: **5 marks** (marks awarded varies based on your appropriate use of features such as eager vs lazy fetching & cascading, and the general quality of the domain model). If no `Organisation.md` file is provided then a mark of **zero** will be given for this component.
+
+- Code review: **5 marks** (code is understandable and well-commented; no obvious errors that may have been missed by the integration tests). If no `Organisation.md` file is provided then a mark of **zero** will be given for this component.
+
+- Teamwork: **25 marks** Clear evidence that every member in the team has
   contributed to the project. This will be assessed by examining the commit
   logs and other information associated with your team repository.
 
@@ -182,15 +199,7 @@ This project is worth **30%** of your final grade. It is marked out of **80 mark
     times, but we will be looking for evidence that there was cooperation and
     collaboration.
 
-    Use the `Team.md` file to document how the work was
-    done. For example, the team may discuss the domain model together but only
-    one person implements. This will mean we might only see commits from that
-    person, and wonder if the other members were involved. A short explanation
-    in `Team.md` will help this. Alternatively, the other two members might
-    explain their contribution in a pull request (in which case this should be
-    noted in `Team.md`). 
-
-    If no `Team.md` file is provided then a mark of **zero** will be given for this component.
+    If no `Organisation.md` file is provided then a mark of **zero** will be given for this component.
 
     Issues with team performance (e.g. one member not contributing) must be brought to our attention as soon as possible.
 
@@ -213,7 +222,7 @@ If the user hasn't logged in, then clicking on the "Book!" button next to one of
 
 ![](./spec/please-login.PNG)
 
-If the user has already signed in, they will be redirected to the seat selection page for their selected concert and date.
+If the user has already signed in, they will be redirected to the seat selection page for their selected concert and date. See `concert-service/src/main/resources/db-init.sql` for the data that the server is initialised with, including possible users and their passwords.
 
 ![](./spec/booking-page.PNG)
 
