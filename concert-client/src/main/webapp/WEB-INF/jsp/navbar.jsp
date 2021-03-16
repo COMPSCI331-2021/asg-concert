@@ -3,7 +3,7 @@
 <c:choose>
     <c:when test="${signedIn == false}">
         <nav class="nav flex-row justify-sb align-center">
-            <h1 class="nav-brand">SE325 Concert Booking System</h1>
+            <h1 class="nav-brand">Concert Booking System</h1>
             <form action="./Login" method="post" class="flex-row justify-end align-center">
                 <label for="txtUsername">Username: </label>
                 <input type="text" class="textbox" id="txtUsername" name="username" placeholder="Your username">
@@ -17,7 +17,7 @@
     </c:when>
     <c:otherwise>
         <nav class="nav flex-row justify-sb align-center">
-            <h1 class="nav-brand">SE325 Concert Booking System</h1>
+            <h1 class="nav-brand">Concert Booking System</h1>
             <form action="./Logout" method="get" class="flex-row justify-end align-center">
                 <button type="submit">Sign out</button>
             </form>
