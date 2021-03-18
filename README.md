@@ -173,7 +173,7 @@ The marking of this lab will be based on your team repository as of
 list of members in your team and a brief summary of what role each member
 played.
 
-**If this file is not provided then no marks will be awarded for the Teamwork component of the mark (see below).**
+**If this file is not provided then no marks will be awarded for some components of the mark (see below).**
 
 #### Assessment
 This project is worth **30%** of your final grade. It is marked out of **80 marks**, as per the following rubric:
@@ -184,11 +184,11 @@ This project is worth **30%** of your final grade. It is marked out of **80 mark
 
 - The five publish / subscribe tests pass as expected: **10 marks** (4 marks each for `testSubscription()` and `testSubscriptionForDifferentConcert()`, 2 marks for the other three tests combined).
 
-- A strategy has been employed to minimise the chance of concurrency errors such as double-bookings: **5 marks** (marks awarded varies based on the strategy chosen).
+- A strategy has been employed to minimise the chance of concurrency errors such as double-bookings: **5 marks** (marks awarded varies based on the strategy chosen). If no `Organisation.md` file is provided then a mark of **zero** will be given for this component.
 
 - Domain model: **5 marks** (marks awarded varies based on your appropriate use of features such as eager vs lazy fetching & cascading, and the general quality of the domain model). If no `Organisation.md` file is provided then a mark of **zero** will be given for this component.
 
-- Code review: **5 marks** (code is understandable and well-commented; no obvious errors that may have been missed by the integration tests). If no `Organisation.md` file is provided then a mark of **zero** will be given for this component.
+- Code review: **5 marks** (code is understandable and well-commented; no obvious errors that may have been missed by the integration tests). 
 
 - Teamwork: **25 marks** Clear evidence that every member in the team has
   contributed to the project. This will be assessed by examining the commit
@@ -199,9 +199,10 @@ This project is worth **30%** of your final grade. It is marked out of **80 mark
     times, but we will be looking for evidence that there was cooperation and
     collaboration.
 
+    All members of the team will get the same mark for the project.  Issues with team performance (e.g. one member not contributing) must be brought to our attention as soon as possible.
+
     If no `Organisation.md` file is provided then a mark of **zero** will be given for this component.
 
-    Issues with team performance (e.g. one member not contributing) must be brought to our attention as soon as possible.
 
 Appendix: The client webapp.
 ----------
