@@ -29,7 +29,13 @@ Download the Tomcat archive file (`zip` or `tar.gz`) from
 
 1. Set the environment variable CATALINA_HOME to INSTALL_ROOT/apache-tomcat-VERSION (the location of the root directory for the Tomcat installation)
 
-1. Set the permissions of `CATALINA_HOME/bin/catalina.sh` (or `CATALINA_HOME\bin\catalina.bat`) to be executable 
+1. Set the permissions of `CATALINA_HOME/bin/catalina.sh` (or `CATALINA_HOME\bin\catalina.bat`) to be executable (if necessary - sees ok in the `tar` distribution)
+
+1. Change the port the server will listen to from the default 8080 to 10000.
+
+    1. Edit `CATALINA_HOME/conf/server.xml`
+    1. Find the `Connector` element (or just search for `8080`)
+    1. Change the value `8080` to `10000`
 
 1. Execute the command `CATALINA_HOME/bin/catalina.sh start` (or `CATALINA_HOME\bin\startup.bat start`). You should see something like:
 <pre>
@@ -41,8 +47,10 @@ Download the Tomcat archive file (`zip` or `tar.gz`) from
     Using CATALINA_OPTS:   
     Tomcat started.
 </pre>
-1. In a web browser, visit `http://localhost:8080/`. You should see something like:
-![](Tomcat-installed.png)
+    
+1. In a web browser, visit `http://localhost:10000/`. You should see something like:
+
+    <img src="Tomcat-installed.png" width="500">
 
 ### Install Concert Webapp
 
@@ -55,6 +63,10 @@ Download the Tomcat archive file (`zip` or `tar.gz`) from
 
     Copy `concert-client-1.0.war` to `CATALINA_HOME/webapps/concert-webapp.war` and `concert-service-1.0.war` to `CATALINA_HOME/webapps/webservice.war` (note the names of the files get changed),
 
-1. If your Tomcat server is running then it should pick up the fact that the `war` files have been added to its `webapps` directory, and so when you visit `http://localhost:8080/concert-webapp` you should see:
+1. If your Tomcat server is running then it should pick up the fact that the `war` files have been added to its `webapps` directory, and so when you visit `http://localhost:1000/concert-webapp` you should see:
 
-![](Concert-installed.png)
+    <img src="Concert-installed.png" width="500">
+
+
+
+
