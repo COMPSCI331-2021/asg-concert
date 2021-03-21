@@ -184,9 +184,9 @@ This project is worth **30%** of your final grade. It is marked out of **80 mark
 
 - The five publish / subscribe tests pass as expected: **10 marks** (4 marks each for `testSubscription()` and `testSubscriptionForDifferentConcert()`, 2 marks for the other three tests combined).
 
-- A strategy has been employed to minimise the chance of concurrency errors such as double-bookings: **5 marks** (marks awarded varies based on the strategy chosen). If no `Organisation.md` file is provided then a mark of **zero** will be given for this component.
+- A strategy has been employed to minimise the chance of concurrency errors such as double-bookings: **5 marks** (marks awarded varies based on the strategy chosen). If no `Organisation.md` file is provided, or it does not contain the relevant information, then a mark of **zero** will be given for this component.
 
-- Domain model: **5 marks** (marks awarded varies based on your appropriate use of features such as eager vs lazy fetching & cascading, and the general quality of the domain model). If no `Organisation.md` file is provided then a mark of **zero** will be given for this component.
+- Domain model: **5 marks** (marks awarded varies based on your appropriate use of features such as eager vs lazy fetching & cascading, and the general quality of the domain model). If no `Organisation.md` file is provided, or it does not contain the relevant information, then a mark of **zero** will be given for this component.
 
 - Code review: **5 marks** (code is understandable and well-commented; no obvious errors that may have been missed by the integration tests). 
 
@@ -201,7 +201,7 @@ This project is worth **30%** of your final grade. It is marked out of **80 mark
 
     All members of the team will get the same mark for the project.  Issues with team performance (e.g. one member not contributing) must be brought to our attention as soon as possible.
 
-    If no `Organisation.md` file is provided then a mark of **zero** will be given for this component.
+    If no `Organisation.md` file is provided, or it does not contain the relevant information, then a mark of **zero** will be given for this component.
 
 
 Appendix: The client webapp.
@@ -247,32 +247,10 @@ Whichever IDE you use, the first step will be to download a Tomcat installation,
 
 **Warning** There seem to be a number of variations in IDE setup and installation, so what's below may not work for your particular setup. You may need to explore google to find workable alternatives. [Tomcat-CL](Tomcat-CL.md) has a simplified attempt for doing it from the command line.
 
-##### From IntelliJ
-**Note: This ONLY works in IntelliJ Ultimate edition.** Community edition does not support this. Having said that, Ultimate edition is available for free for educational use. Simply sign up for a new account using your University email address.
 
-1. Within your project, open the *Run Configurations* dialog (usually available in the top-right corner, or open the search box by tapping double-shift, then type "run configurations"). Either way, pick *Edit Configurations*.
-
-2. Click on the **+** button on the top-left of the dialog, then choose *Tomcat server* &rarr; *Local*.
-
-3. Name the configuration whatever you like. For the *HTTP Port*, pick one which is available on your machine, such as *10000*.
-
-4. For the *application server*, pick one from the list. If none are available, click *configure*. You'll be able to add one (by browsing to the location where you downloaded Tomcat earlier).
-
-5. Under the *Deployment* tab, select both WAR artifacts (`client` and `service`) for deployment - these would have been created by IntelliJ's Maven integration (you shouldn't select the *exploded* versions, but it probably doesn't matter). For the application context, set the `service` WAR's context to `/webservice`, and the `client` WAR's context to `/concert-webapp`.
-
-6. Go back to the *Server* tab. Edit the *URL* to be `http://localhost:10000/concert-webapp/` (altering the port as necessary). Then, click `OK`.
-
-7. In the `client` project, open `src/main/java/.../Config.java`, and edit the `WEB_SERVICE_URI` field as appropriate (assuming port `10000`, and the contexts identified in step 5 above, you won't need to change this).
-
-8. In the `client` project, open `src/main/webapp/js/fetch-api.js` and edit `WEB_URI` as appropriate (assuming the contexts identified in step 5 above, you won't need to change this).
-
-9. From the *run configurations* dropdown, slect your new configuration and click the *play* button. The webapp and web service should start, and the browser should eventually open at the URL identified in step 6 above. If it doesn't, you can browse there manually.
-
-10. When you're done, hit the *stop* button. Sometimes you may need to click it twice (do so until the stop button is greyed out, and you see a *Disconnected from server* message in the server output).
-
-##### From Eclipse
+#### From Eclipse
 **Note: This only works with Eclipse for Java EE Developers, with Tomcat support enabled**. If you don't see any of the options mentioned here, it's likely that you don't have these options. You can get them through the *Help* &rarr; *Install new software* menu, searching for *Java EE* and *Tomcat*, respectively. Alternatively you could try using the 
-[marketplace] (https://marketplace.eclipse.org/content/eclipse-java-ee-developer-tools-0) directly.
+[marketplace](https://marketplace.eclipse.org/content/eclipse-java-ee-developer-tools-0) directly.
 
 1. Open *Window* &rarr; *Preferences*, then choose *Server* &rarr; *Runtime Environments*. Click *Add*, then choose the Apache Tomcat version matching the one you downloaded (which should be v8.5 if you're following along).
 
@@ -299,3 +277,26 @@ Whichever IDE you use, the first step will be to download a Tomcat installation,
 12. Browse to the appropriate URL from your browser (which should be <http://localhost:10000/concert-webapp/> if you've followed along), and enjoy.
 
 13. When you make modifications and repackage your WARs, you can delete the contents of the `webapps` folder and re-copy your new WARs over (while the server is stopped).
+
+#### From IntelliJ
+**Note: This ONLY works in IntelliJ Ultimate edition.** Community edition does not support this. Having said that, Ultimate edition is available for free for educational use. Simply sign up for a new account using your University email address.
+
+1. Within your project, open the *Run Configurations* dialog (usually available in the top-right corner, or open the search box by tapping double-shift, then type "run configurations"). Either way, pick *Edit Configurations*.
+
+2. Click on the **+** button on the top-left of the dialog, then choose *Tomcat server* &rarr; *Local*.
+
+3. Name the configuration whatever you like. For the *HTTP Port*, pick one which is available on your machine, such as *10000*.
+
+4. For the *application server*, pick one from the list. If none are available, click *configure*. You'll be able to add one (by browsing to the location where you downloaded Tomcat earlier).
+
+5. Under the *Deployment* tab, select both WAR artifacts (`client` and `service`) for deployment - these would have been created by IntelliJ's Maven integration (you shouldn't select the *exploded* versions, but it probably doesn't matter). For the application context, set the `service` WAR's context to `/webservice`, and the `client` WAR's context to `/concert-webapp`.
+
+6. Go back to the *Server* tab. Edit the *URL* to be `http://localhost:10000/concert-webapp/` (altering the port as necessary). Then, click `OK`.
+
+7. In the `client` project, open `src/main/java/.../Config.java`, and edit the `WEB_SERVICE_URI` field as appropriate (assuming port `10000`, and the contexts identified in step 5 above, you won't need to change this).
+
+8. In the `client` project, open `src/main/webapp/js/fetch-api.js` and edit `WEB_URI` as appropriate (assuming the contexts identified in step 5 above, you won't need to change this).
+
+9. From the *run configurations* dropdown, slect your new configuration and click the *play* button. The webapp and web service should start, and the browser should eventually open at the URL identified in step 6 above. If it doesn't, you can browse there manually.
+
+10. When you're done, hit the *stop* button. Sometimes you may need to click it twice (do so until the stop button is greyed out, and you see a *Disconnected from server* message in the server output).
